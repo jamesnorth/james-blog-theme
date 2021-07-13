@@ -104,35 +104,35 @@ function get_pinyin($letter, $tone, $umlaut=false) {
 function pinyinise_single_word($syllable, $tone, $umlaut=false) {
     $aore = array();
     $ou = array();
-    $vowels = array_intersect(str_split($word), array('A','E','I','O','U','a','e','i','o','u'));
+    $vowels = array_intersect(str_split($syllable), array('A','E','I','O','U','a','e','i','o','u'));
     $last_vowel = array_pop($vowels);
 
-    if (preg_match('/(.*)([ae]+)/', $word, $aore)) {
-
+    if (preg_match('/[ae]+/', $syllable, $aore)) {
+        return str_replace($aore[0], get_pinyin($aore[0], $tone, $umlaut), $syllable);
     }
 
-    if (preg_match('/(.*)ou/', $word, $ou)) {
-
+    if (preg_match('/(.*)ou/', $syllable, $ou)) {
+        return str_replace('ou', get_pinyin('o', $tone, $umlaut) . 'u', $syllable);
     }
 
     $tone_mark = get_pinyin($last_vowel, $tone, $umlaut);
-    return $word;
+    $last_vowel_pos = strripos($syllable, $last_vowel);
+    return substr($syllable, 0, $last_vowel_pos) . $tone_mark . substr($syllable, $last_vowel_pos + 1);
 }
 
 /**
- * 
+ * Convert numbered pinyin to pinyin with tone marks
  */
 function pinyinise($numbered) {
     $words = array();
     preg_match_all('/([A-Za-z]+)(:?)([1-5]+)/', $numbered, $words, PREG_SET_ORDER);
     $pinyin = '';
-    print_r($words); echo "<br />";
     foreach ($words as $word) {
         $syllable = $word[1];
         $tone = $word[3];
         $umlaut = $word[2] === ':';
 
-        $pinyin .= pinyinise_single_word($syllable, $tone, $umlaut);
+        $pinyin .= ' ' . pinyinise_single_word($syllable, $tone, $umlaut);
     }
 
     return $pinyin;

@@ -5,14 +5,17 @@
 echo pinyinise('nu:3ren2ni2hao3yu:3') . '<br />';
 echo pinyinise('nu3ren2') . '<br />';
 echo pinyinise('ni3 hao3') . '<br />';
+echo pinyinise('zhou1') . '<br />';
+echo pinyinise('zou3') . '<br />';
+echo pinyinise('Er2zi5') . '<br />';
+echo pinyinise('Er2zi') . '<br />';
+echo pinyinise('ni3 hao3') . '<br />';
+echo pinyinise('zai4 jian4') . '<br />';
+echo pinyinise('xi3 huan1') . '<br />';
+echo pinyinise('xi1 gua1') . '<br />';
+echo pinyinise('fu4 xi2') . '<br />';
+echo pinyinise('xiao3 shi2') . '<br />';
 
-// echo pinyinise('ni3 hao3') . '<br />';
-// echo pinyinise('zai4 jian4') . '<br />';
-// echo pinyinise('xi3 huan1') . '<br />';
-// echo pinyinise('xi1 gua1') . '<br />';
-// echo pinyinise('fu4 xi2') . '<br />';
-// echo pinyinise('xiao3 shi2') . '<br />';
-// echo pinyinise('zhou1') . '<br />';
 // echo pinyinise('nu:3') . '<br />';
 
 // Array ( 
@@ -35,14 +38,6 @@ echo pinyinise('ni3 hao3') . '<br />';
 //     [2] => Array ( [0] => : [1] => [2] => [3] => [4] => : ) 
 //     [3] => Array ( [0] => 3 [1] => 2 [2] => 2 [3] => 3 [4] => 3 )
 // )
-
-Array ( 
-    [0] => Array ( [0] => nu:3 [1] => nu [2] => : [3] => 3 )
-    [1] => Array ( [0] => ren2 [1] => ren [2] => [3] => 2 ) 
-    [2] => Array ( [0] => ni2 [1] => ni [2] => [3] => 2 ) 
-    [3] => Array ( [0] => hao3 [1] => hao [2] => [3] => 3 ) 
-    [4] => Array ( [0] => yu:3 [1] => yu [2] => : [3] => 3 ) 
-)
 
 // echo '<br />';
 // echo '<br />';

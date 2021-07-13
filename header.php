@@ -60,6 +60,8 @@
         <span class="fs-4"><?php 
             if (is_page()) {
                 the_title(); 
+            } else if (is_single()) {
+                echo 'Blog post';
             } else if (is_category()) {
                 echo single_cat_title();
             } else if (is_tag()) {
