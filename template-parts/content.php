@@ -8,7 +8,7 @@
         }
     }
 
-    if ( !is_single() AND !is_page() ) {
+    if ( !is_page() ) {
         echo '<p class="blog-post-meta">';
         echo '<time datetime="' . get_the_time("Y-m-d") . '">';
         echo get_the_time("Y-m-d") . '</time>';
@@ -21,7 +21,7 @@
         the_content(); 
     }
 
-    if ( !is_single() AND !is_page() ) {
+    if ( !is_page() ) {
         echo '<p class="blog-post-meta">category: ' . get_the_category_list(', ') . '<br />';
 ?>
         tags: <?php the_tags( '', ', ', '' ); ?></p>
