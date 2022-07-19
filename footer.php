@@ -12,10 +12,7 @@
     <!-- <div class="container d-flex flex-wrap">
         <a href="https://www.digitalocean.com/?refcode=f35dd7bb14f9&utm_campaign=Referral_Invite&utm_medium=Referral_Program&utm_source=badge"><img src="https://web-platforms.sfo2.cdn.digitaloceanspaces.com/WWW/Badge%201.svg" alt="DigitalOcean Referral Badge" /></a>
     </div>
-     
-    <div class="container d-flex flex-wrap">
-        <a href="<?php echo wp_login_url(); ?>">Login</a>
-    </div>-->
+     -->
 </footer>
 
 <?php wp_footer(); ?>

@@ -67,4 +67,25 @@ function jrn_login_errors() {
 }
 add_filter( 'login_errors', 'jrn_login_errors' );
 
+function jrn_get_page_title() {
+    if (is_page()) {
+        the_title(); 
+    } else if (is_single()) {
+        echo 'Blog post';
+    } else if (is_category()) {
+        echo single_cat_title();
+    } else if (is_tag()) {
+        echo single_tag_title('tag: ');
+    } else if (is_search()) {
+        echo 'Search';
+    } else if (is_author()) {
+        echo 'James North';
+    } else if (get_post_type() == 'chineseword') {
+        echo 'Chinese Word';
+    } else if (is_404()) {
+        echo 'Page Not found';
+    } else {
+        echo 'Latest posts';
+    }
+}
 ?>
