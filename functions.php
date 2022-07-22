@@ -20,6 +20,7 @@ add_action('wp_enqueue_scripts', 'james_blog_files');
  */
 function james_theme_support() {
     register_nav_menu('headerMenuLocation', 'Header Menu Location');
+    register_nav_menu('footerMenuLocation', 'Footer Menu Location');
 
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
