@@ -19,6 +19,8 @@ add_action('wp_enqueue_scripts', 'james_blog_files');
  * Setup theme support
  */
 function james_theme_support() {
+    register_nav_menu('headerMenuLocation', 'Header Menu Location');
+
     add_theme_support('title-tag');
     add_theme_support('post-thumbnails');
 
@@ -67,6 +69,9 @@ function jrn_login_errors() {
 }
 add_filter( 'login_errors', 'jrn_login_errors' );
 
+/**
+ * echos out the title for a given page based on the page type.
+ */
 function jrn_get_page_title() {
     if (is_page()) {
         the_title(); 
@@ -88,4 +93,51 @@ function jrn_get_page_title() {
         echo 'Latest posts';
     }
 }
+
+/**
+ * fallback function used by wp_nav_menu
+ * 
+ * If no menu is set, then this function will output a default menu.
+ */
+function jrn_default_menu($args = array()) {
+    if (isset( $args->echo ) && false === $args->echo ) {
+        return file_get_contents(locate_template("template-parts/default_menu.php"));
+    } else {
+        get_template_part('template-parts/default_menu');
+    }
+}
+
+/**
+ * This is used to implement the nested nav menu using Bootstrap
+ */
+class Bootstrap_Nav_Menu extends Walker_Nav_Menu {
+    function start_lvl(&$output, $depth=0, $args=null) {
+        if ($depth == 0) {
+            $output .= '<ul class="dropdown-menu">';
+        }
+    }
+
+    function start_el(&$output, $item, $depth=0, $args=null, $id=0) {
+        $item_output = isset( $args->before ) ? $args->before : '';
+
+        if (in_array('menu-item-has-children', $item->classes) == true) {
+            $item_output .= '<li class="nav-item dropdown">';
+            $item_output .= '<a class="nav-link dropdown-toggle link-light" href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false">';
+        } else {
+            if ($depth == 1) {
+                $item_output .= '<li><a href="' . $item->url . '" class="dropdown-item">';
+            } else {
+                $item_output .= '<li class="' . implode(' ', $item->classes) . ' nav-item">';
+                $item_output .= '<a class="nav-link link-light" href="' . $item->url . '">';
+            }
+        }
+
+        $item_output .= $item->title . '</a>';
+
+        $item_output .= isset( $args->after ) ? $args->after : '';
+
+        $output .= $item_output;
+    }
+}
+
 ?>
