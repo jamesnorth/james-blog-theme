@@ -117,26 +117,26 @@ class Bootstrap_Nav_Menu extends Walker_Nav_Menu {
         }
     }
 
-    function start_el(&$output, $item, $depth=0, $args=null, $id=0) {
+    function start_el(&$output, $menu_item, $depth=0, $args=null, $id=0) {
         $item_output = isset( $args->before ) ? $args->before : '';
 
-        if (in_array('menu-item-has-children', $item->classes) == true) {
+        if (in_array('menu-item-has-children', $menu_item->classes) == true) {
             $item_output .= '<li class="nav-item dropdown">';
             $item_output .= '<a class="nav-link dropdown-toggle link-light" href="#" data-bs-toggle="dropdown" role="button" aria-expanded="false">';
         } else {
             if ($depth == 1) {
-                $item_output .= '<li><a href="' . $item->url . '" class="dropdown-item">';
+                $item_output .= '<li><a href="' . $menu_item->url . '" class="dropdown-item">';
             } else {
-                $item_output .= '<li class="' . implode(' ', $item->classes) . ' nav-item">';
-                $item_output .= '<a class="nav-link link-light" href="' . $item->url . '">';
+                $item_output .= '<li class="' . implode(' ', $menu_item->classes) . ' nav-item">';
+                $item_output .= '<a class="nav-link link-light" href="' . $menu_item->url . '">';
             }
         }
 
-        $item_output .= $item->title . '</a>';
+        $item_output .= $menu_item->title . '</a>';
 
         $item_output .= isset( $args->after ) ? $args->after : '';
 
-        $output .= $item_output;
+        $output .= apply_filters( 'jrn_nav_menu_start_el', $item_output, $menu_item, $depth, $args );
     }
 }
 
