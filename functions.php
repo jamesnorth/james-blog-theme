@@ -98,11 +98,19 @@ function jrn_get_page_title() {
 /**
  * a debug function that prints an HTML comment with the filename
  * of the theme file being used to render the page.
+ * 
+ * This works by using PHP backtraces to dynamically extract the file we're
+ * interested in, however it currently does this by looking at the 5th index
+ * of the backtrace. If WP ever changes it's likely this function would break.
+ * 
+ * A more reliable method of doing this should be found. I think a list of WP
+ * theme files should be used to search the backtrace to figure out which one
+ * called "get_header()".
  */
 add_action('get_header', 'theme_dbg_show_filename');
 function theme_dbg_show_filename($filename) {
     $backtrace =  debug_backtrace();
-    $filename = $backtrace[4]['file'];
+    $filename = $backtrace[4]['file']; // TODO: find somehting more reliable than this
     if (defined('WP_DEBUG') && true === WP_DEBUG) {
         echo '<!-- file: ' . basename($filename) . ' -->';
     }
