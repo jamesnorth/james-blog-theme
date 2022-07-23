@@ -1,4 +1,4 @@
-<?php get_header(); theme_dbg_show_filename(__FILE__); ?>
+<?php get_header(); ?>
 
 <?php
     while (have_posts()) {

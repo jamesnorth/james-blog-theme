@@ -1,4 +1,4 @@
-<?php get_header(); theme_dbg_show_filename(__FILE__); ?>
+<?php get_header(); ?>
 
 <form class="form-inline d-flex justify-content-center md-form form-sm mt-0" method="get" action="<?php echo esc_url(site_url('/')); ?>">
     <input class="form-control form-control-sm mr-3 w-75" placeholder="search" id="s" type="search" name="s" value="<?php echo get_search_query(); ?>" />
