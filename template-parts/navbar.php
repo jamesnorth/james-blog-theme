@@ -16,8 +16,7 @@
                     'walker' => new Bootstrap_Nav_Menu()
                 ));
             ?>
- 
-            </ul>
+
             <form class="d-flex" method="get" action="<?php echo esc_url(site_url('/')); ?>">
                 <input type="search" class="form-control" placeholder="Search..." aria-label="Search" name="s">
             </form>
