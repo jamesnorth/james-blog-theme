@@ -96,6 +96,16 @@ function jrn_get_page_title() {
 }
 
 /**
+ * a debug function that prints an HTML comment with the filename
+ * of the theme file being used to render the page.
+ */
+function theme_dbg_show_filename($filename) {
+    if (defined('WP_DEBUG') && true === WP_DEBUG) {
+        echo '<!-- file: ' . basename($filename) . ' -->';
+    }
+}
+
+/**
  * fallback function used by wp_nav_menu
  * 
  * If no menu is set, then this function will output a default menu.
