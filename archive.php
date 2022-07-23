@@ -14,6 +14,7 @@
         }
 
         echo paginate_links();
+        echo "<p>&nbsp;</p>";
     } else {
         echo '<h1>Nothing here yet.</h1>';
     }

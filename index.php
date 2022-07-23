@@ -15,6 +15,7 @@
     }
 
     echo paginate_links();
+    echo "<p>&nbsp;</p>";
 ?>
 
 <?php get_footer(); ?>
