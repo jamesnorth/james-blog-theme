@@ -1,3 +1,4 @@
+<div class="row>"><div class="col-lg-8 col-md-10 mx-auto">
 <?php
 if (have_posts()) {
     $i = 0;
@@ -17,3 +18,4 @@ if (have_posts()) {
     echo '<h1>Nothing here yet.</h1>';
 }
 ?>
+</div></div>
