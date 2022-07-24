@@ -1,9 +1,17 @@
 <?php get_header(); ?>
 
 <div class="container d-flex justify-content-center">
-    <h2 class="display-6"> Sorry, the page you are looking for could not be found. It may have
-        been moved, deleted, or may not exit.
-    </h2>
+    <div class="row">
+        <div class="col-3">
+            <p style="font-size: 132px">😱</p>
+        </div>
+        <div class="col">
+            <h2 class="display-6">Sorry, the page you are looking for could not be found.</h2>
+            <p>&nbsp;</p>
+            <h2 class="display-6">It may have been moved, deleted, or may not exit.</h2>
+            </h2>
+        </div>
+    </div> <!-- row -->
 <p>&nbsp;</p>
 <p>&nbsp;</p>
 <p>&nbsp;</p>
@@ -18,4 +26,5 @@
         </button>
     </form>
 </div>
+<p>&nbsp;</p>
 <?php get_footer(); ?>
