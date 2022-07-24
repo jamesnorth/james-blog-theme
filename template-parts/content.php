@@ -9,9 +9,11 @@
     }
 
     if ( !is_page() ) {
-        echo '<p class="blog-post-meta">';
+        echo '<p class="blog-post-meta">Posted ';
         echo '<time datetime="' . get_the_time("Y-m-d") . '">';
         echo get_the_time("Y-m-d") . '</time>';
+        echo ' in ';
+        echo get_the_category_list(', ');
         echo '</p>';
     } 
     
@@ -22,11 +24,17 @@
     }
 
     if ( !is_page() ) {
-        echo '<p class="blog-post-meta">category: ' . get_the_category_list(', ') . '<br />';
-?>
-        tags: <?php the_tags( '', ', ', '' ); ?></p>
-<?php
+        $tags = get_the_tags();
+        if ( $tags ) {
+            foreach ( $tags as $tag ) : ?>
+                <span class="badge rounded-pill bg-primary text-light">
+                <i class="bi bi-tag"></i>&nbsp;<a class="link-light text-decoration-none" href="<?php echo esc_url( get_tag_link( $tag->term_id ) ); ?>" rel="tag">
+                <?php echo esc_html( $tag->name ); ?>&nbsp;&nbsp;</a>
+                </span>
+            <?php endforeach;
+        }
     }
+
 
 ?>
 </article> <!-- post -->

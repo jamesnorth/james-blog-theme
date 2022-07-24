@@ -7,9 +7,9 @@ function james_blog_files() {
     $theme_version = wp_get_theme()->get( 'Version' );
     
     wp_enqueue_style( 'jrn-style', get_stylesheet_uri(), array(), $theme_version );
-    
     wp_enqueue_style('bootstrap-css', '//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css');
     wp_enqueue_script('bootstrap-js', '//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js', NULL, '1.0', true);
+    wp_enqueue_style('bootstrap-icon', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css');
     wp_enqueue_script('font-awesome', '//kit.fontawesome.com/2bc682a768.js',  NULL, '1.0', true);
 
 }
