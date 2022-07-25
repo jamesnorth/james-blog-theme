@@ -11,7 +11,7 @@
     <header class="py-3 bg-light border-bottom mb-4">
     <div class="container d-flex flex-wrap justify-content-center">
         <a href="#" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto text-dark text-decoration-none">
-            <span class="fs-4"><?php jrn_get_page_title(); ?></span>
+            <span class="fs-4"><?php echo jrn_get_page_title(); ?></span>
         </a>
     </div>
     </header>

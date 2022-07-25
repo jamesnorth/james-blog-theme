@@ -9,7 +9,7 @@ function james_blog_files() {
     wp_enqueue_style( 'jrn-style', get_stylesheet_uri(), array(), $theme_version );
     wp_enqueue_style('bootstrap-css', '//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css');
     wp_enqueue_script('bootstrap-js', '//cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js', NULL, '1.0', true);
-    wp_enqueue_style('bootstrap-icon', 'https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css');
+    wp_enqueue_style('bootstrap-icon', '//cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css');
     wp_enqueue_script('font-awesome', '//kit.fontawesome.com/2bc682a768.js',  NULL, '1.0', true);
 
 }
@@ -74,25 +74,30 @@ add_filter( 'login_errors', 'jrn_login_errors' );
  * echos out the title for a given page based on the page type.
  */
 function jrn_get_page_title() {
+    $page_title = '';
+
     if (is_page()) {
-        the_title(); 
+        $page_title = get_the_title(); 
     } else if (is_single()) {
-        echo 'Blog post';
-    } else if (is_category()) {
-        echo single_cat_title();
+        $page_title = 'Blog post';
+    } else if (is_category()) {        
+        $page_title = single_cat_title('', false);
     } else if (is_tag()) {
-        echo single_tag_title('tag: ');
+        $page_title = single_tag_title('tag: ');
     } else if (is_search()) {
-        echo 'Search';
+        $page_title = 'Search';
     } else if (is_author()) {
-        echo 'James North';
+        $page_title = 'James North';
     } else if (get_post_type() == 'chineseword') {
-        echo 'Chinese Word';
+        $page_title = 'Chinese Word';
     } else if (is_404()) {
-        echo 'Page Not found';
+        $page_title = 'Page Not found';
     } else {
-        echo 'Latest posts';
+        $page_title = 'Latest posts';
     }
+
+    $page_title = apply_filters( 'jrn_get_page_title', $page_title, null );
+    return $page_title;
 }
 
 /**
